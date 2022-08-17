@@ -31,7 +31,9 @@ cmd_dict = { # 命令字典
     "mkdir" :6,
     "tree"  :7,
     "rm"    :8,
-    "rename":9
+    "rename":9,
+    "copy"  :10,
+    "move"  :11
 }
 
 with open(lang_path, 'r', encoding='utf-8') as f: # 导入语言文件
@@ -61,6 +63,10 @@ def do_cmd(cmd_value,input_cmd):
             file.rm(input_cmd[1])
         elif cmd_value == 9:
             file.rename(input_cmd[1],input_cmd[2])
+        elif cmd_value == 10:
+            file.copy(input_cmd[1],input_cmd[2])
+        elif cmd_value == 11:
+            file.move(input_cmd[1],input_cmd[2])
     except:
         if debug: # 输出错误信息
             print(sys.exc_info())
