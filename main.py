@@ -7,6 +7,7 @@
 
 import os,sys,json
 import color # 颜色输出库（仅Windows）
+import file
 
 """
 New Python Console
@@ -21,9 +22,13 @@ with open('options.json','r',encoding='utf-8') as f: # 导入设置
     debug = options['debug']
 
 cmd_dict = { # 命令字典
-    "exit":0,
-    "help":1,
-    "echo":2
+    "exit" :0,
+    "help" :1,
+    "echo" :2,
+    "cat"  :3,
+    "cd"   :4,
+    "dir"  :5,
+    "mkdir":6
 }
 
 with open(lang_path, 'r', encoding='utf-8') as f: # 导入语言文件
@@ -39,12 +44,17 @@ def do_cmd(cmd_value,input_cmd):
             for i in input_cmd[1:]:
                 print(i,end=' ')
             print()
+        elif cmd_value == 3:
+            print(file.cat(input_cmd[1]))
+        elif cmd_value == 4:
+            file.cd(input_cmd[1])
+        elif cmd_value == 5:
+            print(file.dir())
     except:
         if debug: # 输出错误信息
             print(sys.exc_info())
         else:
             print("Error: %s" %sys.exc_info()[0])
-
 
 def main():
     print(con_name+" [版本 %s]\nThis program is licensed under the MIT License\n" %ver)
