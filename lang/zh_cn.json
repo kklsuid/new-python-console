@@ -1,3 +1,4 @@
 {
-    "lang_help":"hello!"
+    "lang_help":"你好！",
+    "lang_badcmd":"不是内部或外部命令，也不是可运行的程序或批处理文件。"
 }
