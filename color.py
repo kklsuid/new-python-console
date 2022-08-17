@@ -19,7 +19,7 @@ BACKGROUND_YELLOW = 0xe0 # yellow.
   
 # get handle
 std_out_handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
-  
+
 def set_cmd_text_color(color, handle=std_out_handle):
     Bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
     return Bool
@@ -27,37 +27,26 @@ def set_cmd_text_color(color, handle=std_out_handle):
 #reset white
 def resetColor():
     set_cmd_text_color(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE)
-  
-#green
-def printGreen(mess):
-    set_cmd_text_color(FOREGROUND_GREEN)
-    sys.stdout.write(mess + '\n')
-    resetColor()
- 
-#red
-def printRed(mess):
-    set_cmd_text_color(FOREGROUND_RED)
-    sys.stdout.write(mess + '\n')
-    resetColor()
-   
-#yellow
-def printYellow(mess):
-    set_cmd_text_color(FOREGROUND_YELLOW)
+
+def printColor(mess,forecolor,backcolor=False):
+    if forecolor == 'green':
+        if backcolor == False:
+            set_cmd_text_color(FOREGROUND_GREEN)
+        else:
+            set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_GREEN)
+    elif forecolor == 'red':
+        if backcolor == False:
+            set_cmd_text_color(FOREGROUND_RED)
+        else:
+            set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_RED)
+    elif forecolor == 'yellow':
+            set_cmd_text_color(FOREGROUND_YELLOW)
+    else:
+        resetColor()
     sys.stdout.write(mess + '\n')
     resetColor()
 
-def printGreen(mess):
-    set_cmd_text_color(FOREGROUND_GREEN)
-    sys.stdout.write(mess + '\n')
-    resetColor()
- 
-#white bkground and black text
-def printYellowRed(mess):
-    set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_RED)
-    sys.stdout.write(mess + '\n')
-    resetColor()
-    
 if __name__ == '__main__':
-    printGreen('printGreen:Green Color Text')
-    printRed('printRed:Red Color Text')
-    printYellow('printYellow:Yellow Color Text')
+    printColor('printGreen:Green Color Text','green')
+    printColor('printRed:Red Color Text','red')
+    printColor('printYellow:Yellow Color Text','yellow')
