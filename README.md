@@ -46,9 +46,9 @@ def do_cmd(cmd_value,input_cmd):
 }
 ```
 
-键值命名必须为 `lang_` 开头。
+**键值命名必须为 `lang_` 开头。**
 
-## 设置文件
+#### 设置文件
 
 设置文件为根目录下的`options.json`。
 
