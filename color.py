@@ -56,13 +56,8 @@ def printYellowRed(mess):
     set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_RED)
     sys.stdout.write(mess + '\n')
     resetColor()
-  
-  
+    
 if __name__ == '__main__':
-    printGreen('printGreen:Gree Color Text')
+    printGreen('printGreen:Green Color Text')
     printRed('printRed:Red Color Text')
     printYellow('printYellow:Yellow Color Text')
-
-# ————————————————
-# 版权声明：本文为CSDN博主「Python编程KK」的原创文章，遵循CC 4.0 BY-SA版权协议
-# 原文链接：https://blog.csdn.net/meiguanxi7878/article/details/102491397
