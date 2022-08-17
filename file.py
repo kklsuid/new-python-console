@@ -4,7 +4,7 @@ def cd(target):
     os.chdir(target)
 
 def dir():
-    return ','.join(os.listdir())
+    return '\n'.join(os.listdir())
 
 def mkdir(dir_name):
     os.mkdir(dir_name)
