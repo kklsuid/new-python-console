@@ -1,4 +1,4 @@
-import os,shutil
+import os,shutil,runex
 
 def cd(target):
     os.chdir(target)
@@ -28,3 +28,6 @@ def move(file_path,to_path):
 
 def rename(file_path,to_path):
     os.rename(file_path,to_path)
+
+def tree():
+    runex.run_cmd('tree')

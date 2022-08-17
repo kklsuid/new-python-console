@@ -22,13 +22,16 @@ with open('options.json','r',encoding='utf-8') as f: # 导入设置
     debug = options['debug']
 
 cmd_dict = { # 命令字典
-    "exit" :0,
-    "help" :1,
-    "echo" :2,
-    "cat"  :3,
-    "cd"   :4,
-    "dir"  :5,
-    "mkdir":6
+    "exit"  :0,
+    "help"  :1,
+    "echo"  :2,
+    "cat"   :3,
+    "cd"    :4,
+    "dir"   :5,
+    "mkdir" :6,
+    "tree"  :7,
+    "rm"    :8,
+    "rename":9
 }
 
 with open(lang_path, 'r', encoding='utf-8') as f: # 导入语言文件
@@ -50,6 +53,14 @@ def do_cmd(cmd_value,input_cmd):
             file.cd(input_cmd[1])
         elif cmd_value == 5:
             print(file.dir())
+        elif cmd_value == 6:
+            file.mkdir(input_cmd[1])
+        elif cmd_value == 7:
+            file.tree()
+        elif cmd_value == 8:
+            file.rm(input_cmd[1])
+        elif cmd_value == 9:
+            file.rename(input_cmd[1],input_cmd[2])
     except:
         if debug: # 输出错误信息
             print(sys.exc_info())
